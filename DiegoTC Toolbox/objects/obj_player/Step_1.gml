@@ -1,0 +1,9 @@
+kright = input_check("right",0,0);
+kleft = input_check("left",0,0);
+kup = input_check("up",0,0);
+kdown = input_check("down",0,0);
+kjump = input_check_pressed("jump",0,0);
+kjumpheld = input_check("jump",0,0);
+kcarry = input_check("carry",0,0);
+kcarryrelease = input_check_released("carry",0,0);
+kaction = input_check_pressed("action",0,0);

@@ -1,8 +1,5 @@
 /// @description wrap_val(value, min, max)
 /// @param value
-/// @param  min
-/// @param  max
-/// @param value
 /// @param min
 /// @param max
 function wrap_val(argument0, argument1, argument2) {

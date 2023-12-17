@@ -86,9 +86,10 @@ if (move != 0)
 {
 	//wall sliding
 	if (!grounded) && collision_rectangle(x+(16*xsc),y-(38*ysc),x+(20*xsc),y-(34*ysc),obj_wall,false,true) && (vsp > 0) && !(move_lock) {
-		vsp=1;
+		vsp=min(vsp,1.125);
 		sliding=true;
 	} else {
+		if (sliding) xsc=-xsc;
 		sliding=false;
 	}
 	
@@ -103,6 +104,7 @@ if (move != 0)
 else
 {
 	hsp = lerp(hsp,0,fric)
+	if (sliding) xsc=-xsc;
 	sliding=false;
 }
 	
@@ -227,6 +229,17 @@ if ( (canjump > 0 && (kjump)) || bufferjump == 1 || (inwater == true && (kjump))
 	ystretch=1.25;
 }
 
+//Wall Slide Particles
+
+if (sliding) {
+	slidingtimer-=1
+	if (!slidingtimer) {
+		instance_create_depth(x+16*xsc,y-32*ysc,5,obj_dustparticle)
+		if collision_rectangle(x+(16*xsc),y,x+(20*xsc),y+4*ysc,obj_wall,false,true) instance_create_depth(x+16*xsc,y-4*ysc,5,obj_dustparticle)
+	}
+	slidingtimer=wrap_val(slidingtimer,0,10)
+} else slidingtimer=10
+
 //Switch Gravity pt 2
 /*if place_meeting(x,y,obj_bluediamond) && (alarm[1] > 0)
 {
@@ -255,7 +268,7 @@ if place_meeting(x,y,obj_ladder) && (kup)
 }*/
 
 //Wall Jump
-if ((kjump) || wallbuffer == 1) && place_meeting(x+1, y, obj_wall) && (sliding) && (!inwater)
+if ((kjump) || wallbuffer == 1) && place_meeting(x+1, y, obj_wall) && (!grounded) && (!inwater)
 {
     sliding=false;
 	audio_play_once(snd_jump, 1);
@@ -269,7 +282,7 @@ if ((kjump) || wallbuffer == 1) && place_meeting(x+1, y, obj_wall) && (sliding) 
 	alarm[1]=15;
 }
 
-if ((kjump) || wallbuffer == 1) && place_meeting(x-1, y, obj_wall) && (sliding) && (!inwater)
+if ((kjump) || wallbuffer == 1) && place_meeting(x-1, y, obj_wall) && (!grounded) && (!inwater)
 {
 	sliding=false;
     audio_play_once(snd_jump, 1);

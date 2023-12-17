@@ -32,6 +32,7 @@ xskew = 0;
 death = 0;
 carrying = 0;
 sliding = 0;
+slidingtimer = 10;
 launched=0;
 crouched=0;
 jump = 0;

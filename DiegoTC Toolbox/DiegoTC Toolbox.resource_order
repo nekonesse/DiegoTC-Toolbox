@@ -167,6 +167,7 @@
     {"name":"input_mouse_wheel_up","order":10,"path":"scripts/input_mouse_wheel_up/input_mouse_wheel_up.yy",},
     {"name":"PS4_L1","order":7,"path":"sprites/PS4_L1/PS4_L1.yy",},
     {"name":"input_trigger_effect_set_strength","order":6,"path":"scripts/input_trigger_effect_set_strength/input_trigger_effect_set_strength.yy",},
+    {"name":"spr_diegowallslide","order":4,"path":"sprites/spr_diegowallslide/spr_diegowallslide.yy",},
     {"name":"PS5_Right_Stick_Left","order":23,"path":"sprites/PS5_Right_Stick_Left/PS5_Right_Stick_Left.yy",},
     {"name":"input_verb_set","order":7,"path":"scripts/input_verb_set/input_verb_set.yy",},
     {"name":"input_binding_gamepad_axis","order":1,"path":"scripts/input_binding_gamepad_axis/input_binding_gamepad_axis.yy",},

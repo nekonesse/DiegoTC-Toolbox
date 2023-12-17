@@ -37,6 +37,9 @@
     "name": "spr_diegoidle",
     "path": "sprites/spr_diegoidle/spr_diegoidle.yy",
   },
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_diegofall",
+    "path": "sprites/spr_diegofall/spr_diegofall.yy",
+  },
   "visible": true,
 }

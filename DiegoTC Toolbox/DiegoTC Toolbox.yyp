@@ -85,7 +85,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.2.108",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"input_mouse_x","path":"scripts/input_mouse_x/input_mouse_x.yy",},},
@@ -203,6 +203,7 @@
     {"id":{"name":"input_mouse_wheel_up","path":"scripts/input_mouse_wheel_up/input_mouse_wheel_up.yy",},},
     {"id":{"name":"PS4_L1","path":"sprites/PS4_L1/PS4_L1.yy",},},
     {"id":{"name":"input_trigger_effect_set_strength","path":"scripts/input_trigger_effect_set_strength/input_trigger_effect_set_strength.yy",},},
+    {"id":{"name":"spr_diegowallslide","path":"sprites/spr_diegowallslide/spr_diegowallslide.yy",},},
     {"id":{"name":"PS5_Right_Stick_Left","path":"sprites/PS5_Right_Stick_Left/PS5_Right_Stick_Left.yy",},},
     {"id":{"name":"input_verb_set","path":"scripts/input_verb_set/input_verb_set.yy",},},
     {"id":{"name":"input_binding_gamepad_axis","path":"scripts/input_binding_gamepad_axis/input_binding_gamepad_axis.yy",},},

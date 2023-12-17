@@ -76,7 +76,7 @@ if !(move_lock)
     move = -kleft + kright
 }
 
-if (alarm[0] > 0) && (place_meeting(x + 1, y, obj_wall) || place_meeting(x - 1, y, obj_wall) )
+if (alarm[0] > 0) && (place_meeting(x + 1, y, obj_wall) || place_meeting(x - 1, y, obj_wall))
 {
 	wallbuffer = 1;
 	alarm[0] = 0;
@@ -84,6 +84,13 @@ if (alarm[0] > 0) && (place_meeting(x + 1, y, obj_wall) || place_meeting(x - 1, 
 
 if (move != 0)
 {
+	//wall sliding
+	if (!grounded) && collision_rectangle(x+(16*xsc),y-(38*ysc),x+(20*xsc),y-(34*ysc),obj_wall,false,true) && (vsp > 0) && !(move_lock) {
+		vsp=1;
+		sliding=true;
+	} else {
+		sliding=false;
+	}
 	
 	if !grounded && fric == 0.01 && (move != sign(hsp_final))
 	{
@@ -96,6 +103,7 @@ if (move != 0)
 else
 {
 	hsp = lerp(hsp,0,fric)
+	sliding=false;
 }
 	
 /*if checkcol(obj_ice,false,false,false,true)
@@ -107,7 +115,7 @@ else if checkcol(obj_wall,false,false,false,true) || checkcol(obj_grate,false,fa
 	fric = .3;
 }*/
 
-if (kjump) && grounded == false
+if (kjump) && grounded == false && !(sliding)
 {
 	alarm[0] = 10;
 }
@@ -200,7 +208,7 @@ if place_meeting(x,y+1,obj_wall) || place_meeting(x,y+1,obj_grate)
     grounded = true
 	launched = false
 	realjump = 0;
-	jump = 0;
+	jump = false;
 }
 else
 {
@@ -214,13 +222,10 @@ if ( (canjump > 0 && (kjump)) || bufferjump == 1 || (inwater == true && (kjump))
 	bufferjump = 0;
 	vsp = -jumpspeed;
 	canjump = 0;
-	jump = 1;
+	jump = true;
 	xstretch=0.75;
 	ystretch=1.25;
 }
-
-xstretch = lerp(xstretch,1, .15);
-ystretch = lerp(ystretch,1, .15);
 
 //Switch Gravity pt 2
 /*if place_meeting(x,y,obj_bluediamond) && (alarm[1] > 0)
@@ -250,33 +255,36 @@ if place_meeting(x,y,obj_ladder) && (kup)
 }*/
 
 //Wall Jump
-if ((kjump) || wallbuffer == 1) && place_meeting(x + 1, y, obj_wall) && grounded = false && inwater = false
+if ((kjump) || wallbuffer == 1) && place_meeting(x+1, y, obj_wall) && (sliding) && (!inwater)
 {
-    audio_play_once(snd_jump, 1)
+    sliding=false;
+	audio_play_once(snd_jump, 1);
+	jump=true;
     wallbuffer = 0;
     bufferjump = 0;
-    vsp = -jumpspeed;
-    xscale = .5
-    yscale = 1.5
-    xskew = 0
-    move = -1
+    vsp=-jumpspeed;
+    move=-1;
+	xsc=-1;
     move_lock = true
 	alarm[1]=15;
 }
 
-if ((kjump) || wallbuffer == 1) && place_meeting(x - 1, y, obj_wall) && grounded = false && inwater = false
+if ((kjump) || wallbuffer == 1) && place_meeting(x-1, y, obj_wall) && (sliding) && (!inwater)
 {
-    audio_play_once(snd_jump, 1)
+	sliding=false;
+    audio_play_once(snd_jump, 1);
+	jump=true;
     wallbuffer = 0;
     bufferjump = 0;
-    vsp = -jumpspeed;
-    xscale = .5
-    yscale = 1.5
-    xskew = 0
-    move = 1
-    move_lock = true
+    vsp=-jumpspeed;
+    move=1;
+	xsc=1;
+    move_lock = true;
+	xstretch=0.75;
+	ystretch=1.25;
 	alarm[1]=15;
 }
+
 /*
 if (has_winder) {
 	
@@ -342,10 +350,15 @@ case colors.gray: image_index = 7 break;
 case colors.none: image_index = 8 break;
 }*/
 
-if (kleft)
-xsc=-1;
-else if (kright)
-xsc=1;
+xstretch = lerp(xstretch,1, .15);
+ystretch = lerp(ystretch,1, .15);
+
+if !(move_lock) {
+	if (kleft) 
+	xsc=-1;
+	else if (kright)
+	xsc=1;
+}
 
 event_user(0)
 

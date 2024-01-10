@@ -123,14 +123,11 @@ if (kjump) && grounded == false && !(sliding)
 }
 else if grounded == true
 {
+	if (alarm[0] > 0) {
+		bufferjump = 1;
+	}
 	alarm[0] = 0;
 	wallbuffer = 0;
-}
-
-if (alarm[0] > 0) && grounded == true
-{
-	bufferjump = 1;
-	alarm[0] = 0;
 }
 
 if !place_meeting(x,y+1,obj_wall) && !place_meeting(x,y+1,obj_grate)
@@ -218,7 +215,7 @@ else
 }
 
 //Jumping
-if ( (canjump > 0 && (kjump)) || bufferjump == 1 || (inwater == true && (kjump)) ) && !(launched) //&& !place_meeting(x,y+2,obj_launcher)
+if ((canjump > 0 && (kjump)) || (bufferjump) || (inwater == true && (kjump)) ) && !(launched) //&& !place_meeting(x,y+2,obj_launcher)
 {
 	audio_play_once(snd_jump, 1)
 	bufferjump = 0;
@@ -233,10 +230,16 @@ if ( (canjump > 0 && (kjump)) || bufferjump == 1 || (inwater == true && (kjump))
 
 if (sliding) {
 	slidingtimer-=1
+	//create particles when timer reaches 0
 	if (!slidingtimer) {
+		//sliding variable already checks if the upper hand is colliding so no need to double check
 		instance_create_depth(x+16*xsc,y-32*ysc,5,obj_dustparticle)
-		if collision_rectangle(x+(16*xsc),y,x+(20*xsc),y+4*ysc,obj_wall,false,true) instance_create_depth(x+16*xsc,y-4*ysc,5,obj_dustparticle)
+		//check collision with bottom foot
+		if collision_rectangle(x+(16*xsc),y,x+(20*xsc),y+4*ysc,obj_wall,false,true) {
+			instance_create_depth(x+16*xsc,y-4*ysc,5,obj_dustparticle) 
+		}
 	}
+	//reset timer back to 10
 	slidingtimer=wrap_val(slidingtimer,0,10)
 } else slidingtimer=10
 
@@ -268,7 +271,7 @@ if place_meeting(x,y,obj_ladder) && (kup)
 }*/
 
 //Wall Jump
-if ((kjump) || wallbuffer == 1) && place_meeting(x+1, y, obj_wall) && (!grounded) && (!inwater)
+if (move!=0) && ((kjump) || wallbuffer == 1) && place_meeting(x+move, y, obj_wall) && (!grounded) && (!inwater)
 {
     sliding=false;
 	audio_play_once(snd_jump, 1);
@@ -276,26 +279,12 @@ if ((kjump) || wallbuffer == 1) && place_meeting(x+1, y, obj_wall) && (!grounded
     wallbuffer = 0;
     bufferjump = 0;
     vsp=-jumpspeed;
-    move=-1;
+    move=-move;
 	xsc=-1;
     move_lock = true
+	image_index=0;
 	alarm[1]=15;
-}
-
-if ((kjump) || wallbuffer == 1) && place_meeting(x-1, y, obj_wall) && (!grounded) && (!inwater)
-{
-	sliding=false;
-    audio_play_once(snd_jump, 1);
-	jump=true;
-    wallbuffer = 0;
-    bufferjump = 0;
-    vsp=-jumpspeed;
-    move=1;
-	xsc=1;
-    move_lock = true;
-	xstretch=0.75;
-	ystretch=1.25;
-	alarm[1]=15;
+	alarm[0]=0;
 }
 
 /*

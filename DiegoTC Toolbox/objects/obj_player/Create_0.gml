@@ -6,7 +6,7 @@ window_set_size(1920,1080)
 window_set_fullscreen(1);
 //window_center();
 
-depth = 0
+depth = -20;
 
 image_speed = 1;
 
@@ -42,9 +42,12 @@ is_recording=false;
 playback=false;
 recordtimer=600;
 
+carryid=undefined;
 
 inwater = false;
 antigrav = false;
+
+upsidedown = false;
 
 //color = defaultcolor
 xsc=1;

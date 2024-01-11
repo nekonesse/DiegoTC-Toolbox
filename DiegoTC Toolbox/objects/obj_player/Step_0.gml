@@ -84,6 +84,7 @@ if (alarm[0] > 0) && (place_meeting(x + 1, y, obj_wall) || place_meeting(x - 1, 
 
 if (move != 0)
 {
+	if !(carrying) {
 	//wall sliding
 	if (!grounded) && collision_rectangle(x+(16*xsc),y-(38*ysc),x+(20*xsc),y-(34*ysc),obj_wall,false,true) && (vsp > 0) && !(move_lock) {
 		vsp=min(vsp,1.125);
@@ -91,6 +92,7 @@ if (move != 0)
 	} else {
 		if (sliding) xsc=-xsc;
 		sliding=false;
+	}
 	}
 	
 	if !grounded && fric == 0.01 && (move != sign(hsp_final))
@@ -150,18 +152,9 @@ hsp_final = hsp + hsp_carry
 hsp_carry = 0;
 
 //Collision
-if place_meeting(x+hsp_final,y,obj_wall)
+if place_meeting(x+hsp_final,y,[obj_wall, obj_grate])
 {
-	while !place_meeting(x+sign(hsp_final),y,obj_wall)
-	{
-		x += sign(hsp_final);
-	}
-	hsp_final = 0;
-}
-
-if place_meeting(x+hsp_final,y,obj_grate)
-{
-	while !place_meeting(x+sign(hsp_final),y,obj_grate)
+	while !place_meeting(x+sign(hsp_final),y,[obj_wall, obj_grate])
 	{
 		x += sign(hsp_final);
 	}
@@ -169,18 +162,9 @@ if place_meeting(x+hsp_final,y,obj_grate)
 }
 x += hsp_final;
 
-if place_meeting(x,y+vsp,obj_wall)
+if place_meeting(x,y+vsp,[obj_wall, obj_grate])
 {
-	while !place_meeting(x,y+sign(vsp),obj_wall)
-	{
-		y += sign(vsp);
-	}
-	vsp = 0;
-}
-
-if place_meeting(x,y+vsp,obj_grate)
-{
-	while !place_meeting(x,y+sign(vsp),obj_grate)
+	while !place_meeting(x,y+sign(vsp),[obj_wall, obj_grate])
 	{
 		y += sign(vsp);
 	}
@@ -242,6 +226,14 @@ if (sliding) {
 	//reset timer back to 10
 	slidingtimer=wrap_val(slidingtimer,0,10)
 } else slidingtimer=10
+
+var box=instance_place(x+2*xsc,y,obj_box)
+if (kcarry) && (carryid==undefined) && (box) && (box.image_xscale==1) && (box.image_yscale==1) {
+	carryid=box
+	box.carryplayer=id
+	box.carry=1
+	carrying=1
+}
 
 //Switch Gravity pt 2
 /*if place_meeting(x,y,obj_bluediamond) && (alarm[1] > 0)

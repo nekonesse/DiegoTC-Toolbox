@@ -19,8 +19,8 @@ return {
         left:  input_binding_key(vk_left),
         right: input_binding_key(vk_right),
 
-        jump:  input_binding_key("Z"),
-        carry:  input_binding_key("X"),
+        jump:  input_binding_key("X"),
+        carry:  input_binding_key("Z"),
         action: input_binding_key("C"),
 		record: input_binding_key("A"),
 		recordplay: input_binding_key("S"),

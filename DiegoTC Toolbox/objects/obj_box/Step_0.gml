@@ -1,6 +1,8 @@
 if !(carry) {
 mask_index = spr_box;
 
+releasebuffer=max(0,releasebuffer-1);
+
 //Gravity
 if !(grounded)
 {
@@ -56,20 +58,14 @@ else
 
 var player = instance_place(x,y-16,obj_player)
 
-if !player && place_meeting(x-2,y,obj_player) && (obj_player.kright)
-{
-	if !place_meeting(x+2,y,obj_wall)
-	{
+if !player && place_meeting(x-2,y,obj_player) && (obj_player.kright) && !place_meeting(x+2,y,obj_wall)
+{ 
 	hsp = 2
-	}
 }
 
-if !player && place_meeting(x+2,y,obj_player) && (obj_player.kleft)
-{
-	if !place_meeting(x-2,y,obj_wall)
-	{
+if !player && place_meeting(x+2,y,obj_player) && (obj_player.kleft) && !place_meeting(x-2,y,obj_wall)
+{ 
 	hsp = -2
-	}
 }
 
 
@@ -83,28 +79,42 @@ mask_index = spr_empty;
 //Lock Onto Player
 if !(carryplayer.upsidedown)
 {
-x = carryplayer.x+22*carryplayer.xsc
-y = carryplayer.y-36
+	x = approach_val(x,carryplayer.x+22*carryplayer.xsc,4+abs(carryplayer.hsp))
+	y = approach_val(y,carryplayer.y-36,4+abs(carryplayer.vsp))
 }
 else
 {
-x = carryplayer.x+22*carryplayer.xsc
-y = carryplayer.y+36
+	x = carryplayer.x+22*carryplayer.xsc
+	y = carryplayer.y+36
 }
 
-if (input_check_released("carry"))
+if (input_check_pressed("carry"))
 {
     if instance_exists(carryplayer) && !collision_rectangle(x+16*carryplayer.xsc,y-18,x+26*carryplayer.xsc,y+18,obj_mainsolid,false,true) {
 		    if !(carryplayer.dropbuffer > 0) 
 		    {
-			    carry = 0
-				carryplayer.carryid=undefined
-				carryplayer.carrying=0
+				carry = 0
+				carryplayer.carryid = undefined
+				carryplayer.carrying = 0
+				releasebuffer = 5
 				
-				x += 10*carryplayer.xsc
+				if (carryplayer.kup) {
+					y -= 10
+					x -= 22*carryplayer.xsc
+					
+					hsp = carryplayer.hsp
+				    vsp = -9
+				} else if (carryplayer.kdown) {
+					x += 14*carryplayer.xsc
+					
+					hsp = carryplayer.hsp
+					vsp=1
+				} else {
+					x += 10*carryplayer.xsc
 				
-				hsp = 8*carryplayer.xsc
-			    vsp = -2
+					hsp = 8*carryplayer.xsc
+				    vsp = -2
+				}
 			}
 	}
 

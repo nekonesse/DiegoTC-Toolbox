@@ -12,3 +12,5 @@ launched=false;
 
 carryplayer=undefined;
 carry=0;
+
+releasebuffer=0;

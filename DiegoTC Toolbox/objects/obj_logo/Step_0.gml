@@ -1,0 +1,1 @@
+image_angle=wave_val(-3,3,10,0)

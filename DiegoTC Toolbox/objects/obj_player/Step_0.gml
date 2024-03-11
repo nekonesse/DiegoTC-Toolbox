@@ -81,34 +81,6 @@ if (alarm[0] > 0) && (place_meeting(x + 1, y, obj_wall) || place_meeting(x - 1, 
 	wallbuffer = 1;
 	alarm[0] = 0;
 }
-
-if (move != 0)
-{
-	if !(carrying) {
-	//wall sliding
-	if (!grounded) && collision_rectangle(x+(16*xsc),y-(38*ysc),x+(20*xsc),y-(34*ysc),obj_wall,false,true) && (vsp > 0) && !(move_lock) {
-		vsp=min(vsp,1.125);
-		sliding=true;
-	} else {
-		if (sliding) xsc=-xsc;
-		sliding=false;
-	}
-	}
-	
-	if !grounded && fric == 0.01 && (move != sign(hsp_final))
-	{
-		fric = .3;
-	}
-	hsp += move*accel
-
-	hsp = clamp(hsp,-max_hsp,max_hsp)
-}
-else
-{
-	hsp = lerp(hsp,0,fric)
-	if (sliding) xsc=-xsc;
-	sliding=false;
-}
 	
 /*if checkcol(obj_ice,false,false,false,true)
 {
@@ -152,9 +124,9 @@ hsp_final = hsp + hsp_carry
 hsp_carry = 0;
 
 //Collision
-if place_meeting(x+hsp_final,y,[obj_wall, obj_grate])
+if place_meeting(round(x)+hsp_final,round(y),[obj_wall, obj_grate])
 {
-	while !place_meeting(x+sign(hsp_final),y,[obj_wall, obj_grate])
+	while !place_meeting(round(x)+sign(hsp_final),round(y),[obj_wall, obj_grate])
 	{
 		x += sign(hsp_final);
 	}
@@ -162,15 +134,44 @@ if place_meeting(x+hsp_final,y,[obj_wall, obj_grate])
 }
 x += hsp_final;
 
-if place_meeting(x,y+vsp,[obj_wall, obj_grate])
+if place_meeting(round(x),round(y)+vsp,[obj_wall, obj_grate])
 {
-	while !place_meeting(x,y+sign(vsp),[obj_wall, obj_grate])
+	while !place_meeting(round(x),round(y)+sign(vsp),[obj_wall, obj_grate])
 	{
 		y += sign(vsp);
 	}
 	vsp = 0;
 }
 y += vsp;
+
+if (move != 0)
+{
+	if !(carrying) {
+	//wall sliding
+	var coll=collision_rectangle(x+(16*xsc),y-(38*ysc),x+(20*xsc),y-(34*ysc),obj_wall,false,true)
+	if (!grounded) && (coll && coll.object_index!=obj_box) && (vsp > 0) && !(move_lock) {
+		vsp=min(vsp,1.125);
+		sliding=true;
+	} else {
+		if (sliding) xsc=-xsc;
+		sliding=false;
+	}
+	}
+	
+	if !grounded && fric == 0.01 && (move != sign(hsp_final))
+	{
+		fric = .3;
+	}
+	hsp += move*accel
+
+	hsp = clamp(hsp,-max_hsp,max_hsp)
+}
+else
+{
+	hsp = lerp(hsp,0,fric)
+	if (sliding) xsc=-xsc;
+	sliding=false;
+}
 
 if place_meeting(x,y+1,obj_wall) && !place_meeting(x, yprevious+1, obj_wall)
 {
@@ -227,8 +228,10 @@ if (sliding) {
 	slidingtimer=wrap_val(slidingtimer,0,10)
 } else slidingtimer=10
 
+//Carry Box
+
 var box=instance_place(x+2*xsc,y,obj_box)
-if (kcarry) && (carryid==undefined) && (box) && (box.image_xscale==1) && (box.image_yscale==1) {
+if (kcarry) && (carryid==undefined) && (box) && (box.image_xscale==1) && (box.image_yscale==1) && !(box.releasebuffer){
 	carryid=box
 	box.carryplayer=id
 	box.carry=1
@@ -272,7 +275,7 @@ if (move!=0) && ((kjump) || wallbuffer == 1) && place_meeting(x+move, y, obj_wal
     bufferjump = 0;
     vsp=-jumpspeed;
     move=-move;
-	xsc=-1;
+	xsc=-xsc;
     move_lock = true
 	image_index=0;
 	alarm[1]=15;

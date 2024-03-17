@@ -45,7 +45,7 @@ antigrav = false;
 
 upsidedown = false;
 
-//color = defaultcolor
+color = defaultcolor;
 xsc=1;
 ysc=1;
 xstretch=1;

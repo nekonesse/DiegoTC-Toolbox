@@ -11,6 +11,9 @@ grounded=false;
 launched=false;
 
 carryplayer=undefined;
+minecartcarry=undefined;
 carry=0;
 
 releasebuffer=0;
+
+color=defaultcolor;

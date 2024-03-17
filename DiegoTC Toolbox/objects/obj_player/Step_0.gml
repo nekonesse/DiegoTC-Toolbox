@@ -91,19 +91,6 @@ else if checkcol(obj_wall,false,false,false,true) || checkcol(obj_grate,false,fa
 	fric = .3;
 }*/
 
-if (kjump) && grounded == false && !(sliding)
-{
-	alarm[0] = 10;
-}
-else if grounded == true
-{
-	if (alarm[0] > 0) {
-		bufferjump = 1;
-	}
-	alarm[0] = 0;
-	wallbuffer = 0;
-}
-
 if !place_meeting(x,y+1,obj_wall) && !place_meeting(x,y+1,obj_grate)
 {
 	vsp += grav;
@@ -149,7 +136,7 @@ if (move != 0)
 	if !(carrying) {
 	//wall sliding
 	var coll=collision_rectangle(x+(16*xsc),y-(38*ysc),x+(20*xsc),y-(34*ysc),obj_wall,false,true)
-	if (!grounded) && (coll && coll.object_index!=obj_box) && (vsp > 0) && !(move_lock) {
+	if (!grounded) && (coll && coll.object_index!=obj_box && object_get_parent(coll.object_index)!=obj_box) && place_meeting(x+1*xsc,y,obj_wall) && (vsp > 0) && !(move_lock) {
 		vsp=min(vsp,1.125);
 		sliding=true;
 	} else {
@@ -211,6 +198,19 @@ if ((canjump > 0 && (kjump)) || (bufferjump) || (inwater == true && (kjump)) ) &
 	ystretch=1.25;
 }
 
+if (kjump) && grounded == false && !(sliding)
+{
+	alarm[0] = 10;
+}
+else if grounded == true
+{
+	if (alarm[0] > 0) {
+		bufferjump = 1;
+	}
+	alarm[0] = 0;
+	wallbuffer = 0;
+}
+
 //Wall Slide Particles
 
 if (sliding) {
@@ -266,7 +266,8 @@ if place_meeting(x,y,obj_ladder) && (kup)
 }*/
 
 //Wall Jump
-if (move!=0) && ((kjump) || wallbuffer == 1) && place_meeting(x+move, y, obj_wall) && (!grounded) && (!inwater)
+coll=instance_place(x+move, y, obj_wall)
+if (move!=0) && ((kjump) || wallbuffer == 1) && (coll && coll.object_index!=obj_box) && (!grounded) && (!inwater)
 {
     sliding=false;
 	audio_play_once(snd_jump, 1);
@@ -332,21 +333,6 @@ if (has_winder) {
 	}
 }*/
 
-
-//Color Sprite Switch
-/*switch color 
-{
-case colors.yellow: image_index = 0 break;
-case colors.blue: image_index = 1 break;
-case colors.red: image_index = 2 break; 
-case colors.orange: image_index = 3 break;
-case colors.green: image_index = 4 break;
-case colors.purple: image_index = 5 break;
-case colors.white: image_index = 6 break;
-case colors.gray: image_index = 7 break;
-case colors.none: image_index = 8 break;
-}*/
-
 xstretch = lerp(xstretch,1, .15);
 ystretch = lerp(ystretch,1, .15);
 
@@ -357,10 +343,10 @@ if !(move_lock) {
 	xsc=1;
 }
 
-event_user(0)
+event_user(0);
 
-x=round(x)
-y=round(y)
+x=round(x);
+y=round(y);
 
 ///Camera Movement
 
@@ -376,3 +362,6 @@ cam.yto = y + vdist;
 cam.x += (cam.xto-cam.x)/camspd
 cam.y += (cam.yto-cam.y)/camspd
 */
+
+if keyboard_check_pressed(ord("Q")) color-=1
+if keyboard_check_pressed(ord("E")) color+=1

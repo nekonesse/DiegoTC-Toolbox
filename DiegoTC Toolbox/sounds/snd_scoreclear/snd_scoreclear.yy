@@ -9,7 +9,7 @@
   "bitRate":192,
   "compression":0,
   "conversionMode":0,
-  "duration":1.054671,
+  "duration":2.568481,
   "name":"snd_scoreclear",
   "parent":{
     "name":"Sounds",

@@ -30,7 +30,16 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"","%Name":"defaultcolor","filters":[],"listItems":[
+        "colors.yellow",
+        "colors.purple",
+        "colors.red",
+        "colors.green",
+        "colors.blue",
+        "colors.orange",
+      ],"multiselect":false,"name":"defaultcolor","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"colors.red","varType":6,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

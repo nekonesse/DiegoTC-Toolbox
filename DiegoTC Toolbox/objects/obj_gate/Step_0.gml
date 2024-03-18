@@ -21,11 +21,13 @@ if (active) {
 	image_yscale=approach_val(image_yscale,0,0.1)
 	goin=approach_val(goin,1,0.1)
 } else {
-	image_yscale=approach_val(image_yscale,1,0.1)
-	goin=approach_val(goin,0,0.1)
+	if !place_meeting(x,y+4,obj_box) && !place_meeting(x,y+4,obj_player){
+		image_yscale=approach_val(image_yscale,1,0.066)
+		goin=approach_val(goin,0,0.066)
+	}
 	
 	if place_meeting(x,y+1,obj_player) {
-		with(obj_player) {
+		with(instance_place(x,y+1,obj_player)) {
 			//death = 1;
 			//instance_destroy();
 			//if !audio_is_playing(snd_restart) audio_play_once(snd_restart,10)

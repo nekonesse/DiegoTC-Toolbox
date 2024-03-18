@@ -1,11 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_grate",
+  "%Name":"obj_goal",
   "eventList":[
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_grate",
+  "name":"obj_goal",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_grate",
-    "path":"sprites/spr_grate/spr_grate.yy",
+    "name":"spr_transition",
+    "path":"sprites/spr_transition/spr_transition.yy",
   },
   "spriteMaskId":null,
   "visible":true,

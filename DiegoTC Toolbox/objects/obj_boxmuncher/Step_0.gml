@@ -1,4 +1,5 @@
-if place_meeting(x,y-1,obj_box) && (counter < target) && !(going) {
+coll=instance_place(x,y-1,obj_box)
+if (coll && !coll.carry) && (counter < target) && !(going) {
 	going=1
 	elspeed=0
 }

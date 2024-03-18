@@ -29,10 +29,23 @@ draw_sprite(
 
 var eyeposx=x+32
 
+if instance_exists(obj_box) {
+var eyetargetx=lengthdir_x(24,point_direction(eyeposx,eyeposy,instance_nearest(x,y,obj_box).x,instance_nearest(x,y,obj_box).y))
+var eyetargety=lengthdir_y(12,point_direction(eyeposx,eyeposy,instance_nearest(x,y,obj_box).x,instance_nearest(x,y,obj_box).y))
+} else {
+var eyetargetx=0
+var eyetargety=0
+}
+
+if (releasedelay == 30) {
+eyedestx2=approach_val(eyedestx2,eyetargetx,0.5)
+eyedesty2=approach_val(eyedesty2,eyetargety,0.5)
+}
+
 draw_sprite(
 	spr_boxmunchereye,0,
-	eyeposx+median(-12,eyedestx,12),
-	eyeposy+median(-5,eyedesty,5)
+	eyeposx+median(-12,eyedestx2,12),
+	eyeposy+median(-5,eyedesty2,5)
 );
 
 draw_set_halign(fa_center);

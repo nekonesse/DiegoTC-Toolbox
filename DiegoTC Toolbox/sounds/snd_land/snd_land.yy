@@ -9,7 +9,7 @@
   "bitRate":192,
   "compression":0,
   "conversionMode":0,
-  "duration":0.235397,
+  "duration":0.37585,
   "name":"snd_land",
   "parent":{
     "name":"Sounds",

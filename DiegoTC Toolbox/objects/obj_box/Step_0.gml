@@ -128,7 +128,7 @@ if (input_check_pressed("carry"))
 				} else {
 					x += 16*carryplayer.xsc
 				
-					hsp = 8*carryplayer.xsc
+					hsp = 9*carryplayer.xsc
 				    vsp = -2
 				}
 			}

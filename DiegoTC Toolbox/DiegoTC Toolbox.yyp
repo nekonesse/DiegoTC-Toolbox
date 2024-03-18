@@ -551,10 +551,10 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
-    {"roomId":{"name":"lvl1","path":"rooms/lvl1/lvl1.yy",},},
     {"roomId":{"name":"rm_lvlselect","path":"rooms/rm_lvlselect/rm_lvlselect.yy",},},
-    {"roomId":{"name":"lvl2","path":"rooms/lvl2/lvl2.yy",},},
     {"roomId":{"name":"lvltemplate","path":"rooms/lvltemplate/lvltemplate.yy",},},
+    {"roomId":{"name":"lvl1","path":"rooms/lvl1/lvl1.yy",},},
+    {"roomId":{"name":"lvl2","path":"rooms/lvl2/lvl2.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

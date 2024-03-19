@@ -17,6 +17,8 @@ if (going) {
 			with instance_create_depth(coll.x,coll.y,coll.depth,obj_boxparticle) {
 				image_angle=i
 				color=coll.color
+				image_xscale=coll.image_xscale
+				image_yscale=coll.image_yscale
 			}
 			i+=90;
 		}

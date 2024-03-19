@@ -107,7 +107,7 @@ if (input_check_pressed("carry"))
 				} else {
 					x += 10*carryplayer.xsc
 				
-					hsp = 9*carryplayer.xsc
+					hsp = 10*carryplayer.xsc
 				    vsp = -2
 				}
 			}

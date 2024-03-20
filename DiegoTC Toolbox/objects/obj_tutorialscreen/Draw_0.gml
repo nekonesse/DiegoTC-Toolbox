@@ -11,3 +11,4 @@ if myverb != "" {
 	} else
 	draw_sprite(input_binding_get_icon(input_binding_get(myverb)),0,x+sprite_width/2,y+(sprite_height/2)+14)
 }
+draw_set_color(c_white)

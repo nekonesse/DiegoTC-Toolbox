@@ -53,6 +53,13 @@ else
 	elspeed=clamp(elspeed,0,4)
 }
 
+var y_diff=(y-yprevious)-1
+	
+	var player=instance_place(x,y+y_diff,obj_player)
+	if (player) {
+		player.y+=y_diff
+	}
+
 topcoll.y=y-height-96
 
 if (counter >= target) && (channelid) {

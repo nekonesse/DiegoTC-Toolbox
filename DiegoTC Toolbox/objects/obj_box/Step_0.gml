@@ -85,6 +85,37 @@ else {
 
 mask_index = spr_box;
 
+//haha funny variable name
+var pstream = instance_place(x,y,obj_paintstream)
+var pdetector = instance_place(x,y,obj_paintdetector)
+var coll = instance_place(x,y,[obj_wall, obj_grate])
+
+//Get Painted in carry mode
+if pstream != noone && (!coll || coll.object_index == obj_player)
+{
+    if other.color!=other.defaultcolor
+	audio_play_once(snd_paint,3)
+	
+	if color != colors.water
+	other.color=color
+	else
+	other.color=other.defaultcolor
+}
+
+//Active Paint Detectors in carry mode
+if (pdetector != noone) && (!carryplayer.upsidedown || pdetector.image_angle==180) && !place_meeting(x,y,[obj_wall, obj_grate])
+{
+	with(pdetector) {
+		if (channelid) != 0
+		{
+			if (other.color == color)
+				event_user(0);
+			else
+				event_user(1);
+		}
+	}
+}
+
 mask_index = spr_empty;
 
 //Lock Onto Player

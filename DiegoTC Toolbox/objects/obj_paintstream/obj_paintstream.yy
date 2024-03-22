@@ -35,6 +35,7 @@
         "colors.green",
         "colors.blue",
         "colors.orange",
+        "colors.water",
       ],"multiselect":false,"name":"color","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"colors.yellow","varType":6,},
     {"$GMObjectProperty":"","%Name":"channelid","filters":[],"listItems":[],"multiselect":false,"name":"channelid","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"","%Name":"inverted","filters":[],"listItems":[],"multiselect":false,"name":"inverted","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":3,},

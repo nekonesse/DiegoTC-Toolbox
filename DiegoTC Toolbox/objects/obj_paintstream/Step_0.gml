@@ -3,6 +3,7 @@ active=inverted
 else
 active=!inverted
 
+if (active) {
 
 var player = instance_place(x,y,obj_player)
 var box = instance_place(x,y,obj_box)
@@ -25,4 +26,5 @@ if (box) {
 	box.color=color
 	else
 	box.color=box.defaultcolor
+}
 }

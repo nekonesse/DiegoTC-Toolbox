@@ -91,22 +91,22 @@ var pdetector = instance_place(x,y,obj_paintdetector)
 var coll = instance_place(x,y,[obj_wall, obj_grate])
 
 //Get Painted in carry mode
-if pstream != noone && (!coll || coll.object_index == obj_player)
+if (pstream && pstream.active) && (!coll || coll.object_index == obj_player)
 {
-    if other.color!=other.defaultcolor
+    if color!=defaultcolor
 	audio_play_once(snd_paint,3)
 	
-	if color != colors.water
-	other.color=color
+	if pstream.color != colors.water
+	color=pstream.color
 	else
-	other.color=other.defaultcolor
+	color=defaultcolor
 }
 
 //Active Paint Detectors in carry mode
-if (pdetector != noone) && (!carryplayer.upsidedown || pdetector.image_angle==180) && !place_meeting(x,y,[obj_wall, obj_grate])
+if (pdetector) && (!carryplayer.upsidedown || pdetector.image_angle==180) && (!coll || coll.object_index == obj_player)
 {
 	with(pdetector) {
-		if (channelid) != 0
+		if (channelid != 0) && !(donotcheck)
 		{
 			if (other.color == color)
 				event_user(0);

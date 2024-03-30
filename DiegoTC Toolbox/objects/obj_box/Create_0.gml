@@ -17,3 +17,4 @@ carry=0;
 releasebuffer=0;
 
 color=defaultcolor;
+throwable=false;

@@ -116,6 +116,12 @@ if (pdetector) && (!carryplayer.upsidedown || pdetector.image_angle==180) && (!c
 	}
 }
 
+if !collision_rectangle(carryplayer.x-3,carryplayer.bbox_bottom,carryplayer.x+3,carryplayer.bbox_top,id,false,false) {
+	throwable=true;
+} else {
+	throwable=false;
+}
+
 mask_index = spr_empty;
 
 //Lock Onto Player
@@ -132,9 +138,10 @@ else
 {
 	x = carryplayer.x+22*carryplayer.xsc
 	y = carryplayer.y+36
+	
 }
 
-if (input_check_pressed("carry"))
+if (input_check_pressed("carry")) && (throwable)
 {
 	coll=collision_rectangle(x+16*carryplayer.xsc,y-18,x+26*carryplayer.xsc,y+18,obj_wall,false,true)
     if instance_exists(carryplayer) && (!coll || (coll && coll.object_index==obj_player)) {

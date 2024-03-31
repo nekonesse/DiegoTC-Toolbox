@@ -48,6 +48,9 @@
     "name":"spr_button",
     "path":"sprites/spr_button/spr_button.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_button",
+    "path":"sprites/spr_button/spr_button.yy",
+  },
   "visible":true,
 }

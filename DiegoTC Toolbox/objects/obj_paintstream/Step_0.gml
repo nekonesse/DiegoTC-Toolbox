@@ -9,7 +9,7 @@ var player = instance_place(x,y,obj_player)
 var box = instance_place(x,y,obj_box)
 
 if (player) {
-	if player.color!=player.defaultcolor
+	if (player.color!=player.defaultcolor && color == colors.water) || (player.color!=color && color!=colors.water)
 	audio_play_once(snd_paint,3)
 	
 	if color != colors.water
@@ -18,8 +18,8 @@ if (player) {
 	player.color=player.defaultcolor
 }
 
-if (box) {
-	if box.color!=box.defaultcolor
+if (box && !box.carry) {
+	if (box.color!=box.defaultcolor && color == colors.water) || (box.color!=color && color!=colors.water)
 	audio_play_once(snd_paint,3)
 	
 	if color != colors.water

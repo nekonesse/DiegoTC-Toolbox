@@ -93,7 +93,7 @@ var coll = instance_place(x,y,[obj_wall, obj_grate])
 //Get Painted in carry mode
 if (pstream && pstream.active) && (!coll || coll.object_index == obj_player)
 {
-    if color!=defaultcolor
+    if (color!=defaultcolor && pstream.color == colors.water) || (color!=pstream.color && pstream.color!=colors.water)
 	audio_play_once(snd_paint,3)
 	
 	if pstream.color != colors.water

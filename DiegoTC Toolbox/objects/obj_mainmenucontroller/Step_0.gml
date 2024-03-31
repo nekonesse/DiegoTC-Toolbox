@@ -5,5 +5,10 @@ selected-=1;
 else if input_check_pressed("down")
 selected+=1;
 
-if input_check_pressed("jump")
-TransitionStart(targets[selected],sqRoomFadeOut,sqRoomFadeIn)
+if input_check_pressed("accept") {
+	if selected!=4
+	TransitionStart(targets[selected],sqRoomFadeOut,sqRoomFadeIn)
+	else {
+		game_end();
+	}
+}

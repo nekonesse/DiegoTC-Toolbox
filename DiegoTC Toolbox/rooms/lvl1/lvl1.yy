@@ -30,8 +30,6 @@
     {"name":"inst_21DB2023","path":"rooms/lvl1/lvl1.yy",},
     {"name":"inst_F616D7E","path":"rooms/lvl1/lvl1.yy",},
     {"name":"inst_2F42DC16","path":"rooms/lvl1/lvl1.yy",},
-    {"name":"inst_2D84BCD","path":"rooms/lvl1/lvl1.yy",},
-    {"name":"inst_6612756A","path":"rooms/lvl1/lvl1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -134,10 +132,6 @@
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_tutorialscreen","path":"objects/obj_tutorialscreen/obj_tutorialscreen.yy",},"propertyId":{"name":"mytext","path":"objects/obj_tutorialscreen/obj_tutorialscreen.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"On wall",},
             {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_tutorialscreen","path":"objects/obj_tutorialscreen/obj_tutorialscreen.yy",},"propertyId":{"name":"myverb","path":"objects/obj_tutorialscreen/obj_tutorialscreen.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"jump",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":688.0,"y":256.0,},
-        {"$GMRInstance":"","%Name":"inst_2D84BCD","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2D84BCD","objectId":{"name":"obj_sidegate","path":"objects/obj_sidegate/obj_sidegate.yy",},"properties":[
-            {"$GMOverriddenProperty":"","%Name":"","name":"","objectId":{"name":"obj_sidegate","path":"objects/obj_sidegate/obj_sidegate.yy",},"propertyId":{"name":"channelid","path":"objects/obj_sidegate/obj_sidegate.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":256.0,"y":224.0,},
-        {"$GMRInstance":"","%Name":"inst_6612756A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6612756A","objectId":{"name":"obj_grate","path":"objects/obj_grate/obj_grate.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":256.0,"y":160.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":600,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":{"name":"spr_factorybg","path":"sprites/spr_factorybg/spr_factorybg.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],

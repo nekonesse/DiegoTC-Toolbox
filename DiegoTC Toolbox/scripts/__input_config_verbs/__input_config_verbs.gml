@@ -27,12 +27,8 @@ return {
 		
 		restart: input_binding_key("R"),
 		
-		accept:  input_binding_key(vk_space),
-        cancel:  input_binding_key(vk_backspace),
-        action:  input_binding_key(vk_enter),
-        special: input_binding_key(vk_shift),
-        
-        lclick: input_binding_mouse_button(mb_left),
+		accept:  input_binding_key("X"),
+        cancel:  input_binding_key("Z"),
         
         pause: input_binding_key(vk_escape),
     },
@@ -44,22 +40,16 @@ return {
         left:  [input_binding_gamepad_axis(gp_axislh, true),  input_binding_gamepad_button(gp_padl)],
         right: [input_binding_gamepad_axis(gp_axislh, false), input_binding_gamepad_button(gp_padr)],
 		
-		jump:  input_binding_gamepad_button(gp_face4),
+		jump:  input_binding_gamepad_button(gp_face1),
         carry:  [input_binding_gamepad_button(gp_shoulderlb), input_binding_gamepad_button(gp_shoulderrb)],
-        action: input_binding_gamepad_button(gp_face1),
+        action: input_binding_gamepad_button(gp_face2),
+		record: input_binding_gamepad_button(gp_shoulderl),
+		recordplay: input_binding_gamepad_button(gp_shoulderr),
 		
 		restart: input_binding_gamepad_button(gp_face3),
-        
-        accept:  input_binding_gamepad_button(gp_face1),
-        cancel:  input_binding_gamepad_button(gp_face2),
-        action:  input_binding_gamepad_button(gp_face3),
-        special: input_binding_gamepad_button(gp_face4),
-        
-        aim_up:    input_binding_gamepad_axis(gp_axisrv, true),
-        aim_down:  input_binding_gamepad_axis(gp_axisrv, false),
-        aim_left:  input_binding_gamepad_axis(gp_axisrh, true),
-        aim_right: input_binding_gamepad_axis(gp_axisrh, false),
-        lclick:     [input_binding_gamepad_button(gp_shoulderlb), input_binding_gamepad_button(gp_shoulderrb)],
+		
+		accept: input_binding_gamepad_button(gp_face1),
+		cancel: input_binding_gamepad_button(gp_face2),
         
         pause: input_binding_gamepad_button(gp_start),
     },

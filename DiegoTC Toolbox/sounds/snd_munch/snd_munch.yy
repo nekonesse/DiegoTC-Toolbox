@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"snd_munch",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"soundgroup",
+    "path":"audiogroups/soundgroup",
   },
   "bitDepth":1,
   "bitRate":128,

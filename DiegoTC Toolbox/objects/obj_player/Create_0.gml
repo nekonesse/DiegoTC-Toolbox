@@ -1,7 +1,3 @@
-audio_group_load(soundgroup)
-audio_group_load(musicgroup)
-audio_group_set_gain(soundgroup,0.2,0)
-
 depth = -20;
 
 image_speed = 1;

@@ -1,5 +1,6 @@
 draw_set_font(fnt_main)
 draw_set_valign(fa_center)
+draw_set_halign(fa_left)
 for(var i=0; i < array_length(menus); i++) {
 	var wavy = 0;
 	//button

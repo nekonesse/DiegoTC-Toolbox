@@ -8,8 +8,7 @@ menus[4]="Quit Game"
 targets[0]=rm_menu
 targets[1]=rm_lvlselect
 targets[2]=rm_menu
-targets[3]=rm_menu
-targets[4]=rm_menu
+targets[3]=rm_settings
 
 
 selected=1

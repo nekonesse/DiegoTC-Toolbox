@@ -42,7 +42,7 @@ if (!in_input) {
 		if is_string(input_binding_get_icon(input_binding_get((string_lower(keybinds[i]))))) {
 			draw_text_color(w+32,(h-48)+48*i,input_binding_get_icon(input_binding_get(string_lower(keybinds[i]))),c_white,c_white,c_gray,c_gray,1)
 		} else {
-			draw_sprite_ext(input_binding_get_icon(input_binding_get((string_lower(keybinds[i])))),0,w+20,(h-72)+48*i,3,3,0,c_white,1)
+			draw_sprite_ext(input_binding_get_icon(input_binding_get((string_lower(keybinds[i])))),0,w+48,(h-50)+48*i,3,3,0,c_white,1)
 		}
 		draw_set_halign(fa_center)
 	}

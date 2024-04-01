@@ -1,8 +1,11 @@
 draw_set_font(fnt_main)
 for (var dy=0; dy<3; dy++) {
 	for (var dx=0; dx<5; dx++) {
-		draw_sprite(spr_levelbutton,0,x+(96*dx),y+(96*dy))
 		
+		if ds_map_find_value(obj_global.all_levels,"lvl"+lvl[dx,dy]) == 1
+		draw_sprite(spr_levelbutton,1,x+(96*dx),y+(96*dy))
+		else
+		draw_sprite(spr_levelbutton,0,x+(96*dx),y+(96*dy))
 		
 		draw_set_color($46353e)
 		draw_text(x+(96*dx),y+(96*dy)+2,string(lvl[dx,dy]))

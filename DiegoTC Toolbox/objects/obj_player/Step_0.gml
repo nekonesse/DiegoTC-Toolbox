@@ -3,12 +3,16 @@
 /*if !(obj_global.paused)
 {
 
-*/if input_check_pressed("restart",0,0) && !(obj_global.paused)
+*/
+if input_check_pressed("restart",0,0) && !(obj_global.paused)
 {
 	if !audio_is_playing(snd_restart) audio_play_once(snd_restart,10)
 	TransitionStart(room,sqRoomFadeOut,sqRoomFadeIn)
 	is_recording=0;
 }
+
+if input_check_pressed("pause") 
+TransitionStart(rm_menu,sqRoomFadeOut,sqRoomFadeIn)
 /*
 if place_meeting(x,y,obj_spike) && death = 0
 {

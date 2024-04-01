@@ -17,3 +17,4 @@ selected=0
 selectedx=obj_global.res-1
 
 in_input=0
+rebinding_verb=""

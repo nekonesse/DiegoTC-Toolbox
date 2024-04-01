@@ -29,8 +29,12 @@ return {
 		
 		accept:  input_binding_key("X"),
         cancel:  input_binding_key("Z"),
+		menuup:    input_binding_key(vk_up),
+        menudown:  input_binding_key(vk_down),
+        menuleft:  input_binding_key(vk_left),
+        menuright: input_binding_key(vk_right),
         
-        pause: input_binding_key(vk_escape),
+        pause: input_binding_key(vk_enter),
     },
     
     gamepad:
@@ -50,6 +54,10 @@ return {
 		
 		accept: input_binding_gamepad_button(gp_face1),
 		cancel: input_binding_gamepad_button(gp_face2),
+		menuup:    [input_binding_gamepad_axis(gp_axislv, true),  input_binding_gamepad_button(gp_padu)],
+        menudown:  [input_binding_gamepad_axis(gp_axislv, false), input_binding_gamepad_button(gp_padd)],
+        menuleft:  [input_binding_gamepad_axis(gp_axislh, true),  input_binding_gamepad_button(gp_padl)],
+        menuright: [input_binding_gamepad_axis(gp_axislh, false), input_binding_gamepad_button(gp_padr)],
         
         pause: input_binding_gamepad_button(gp_start),
     },

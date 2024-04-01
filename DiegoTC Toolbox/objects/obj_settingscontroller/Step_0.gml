@@ -33,13 +33,16 @@ if input_check_pressed("accept") {
 			case 3: obj_global.vsync=!obj_global.vsync display_reset(0,obj_global.vsync) break;
 			case 4: in_input=1 break;
 		}
+	} else {
+		rebinding_verb=string_lower(keybinds[selected]);
+		event_user(0);
 	}
 }
 
 if !(selected) { 
-	if input_check_pressed("left") {
+	if input_check_pressed("menuleft") {
 		selectedx-=1
-	} else if input_check_pressed("right") {
+	} else if input_check_pressed("menuright") {
 		selectedx+=1
 	}
 }

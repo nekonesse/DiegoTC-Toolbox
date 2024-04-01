@@ -28,6 +28,12 @@ if (going) {
 		instance_destroy(coll);
 		audio_play_sound(snd_munch,0,false);
 	}
+	var coll=collision_rectangle(x-64,y-height-44,x+64,y-height-12,obj_player,false,true)
+	if (coll) {
+		with (coll) {
+			event_user(1);
+		}
+	}
 	
 	if !(height) {
 		releasedelay--;

@@ -25,14 +25,4 @@ if (active) {
 		image_yscale=approach_val(image_yscale,1,0.066)
 		goin=approach_val(goin,0,0.066)
 	}
-	
-	if place_meeting(x,y+1,obj_player) {
-		with(instance_place(x,y+1,obj_player)) {
-			//death = 1;
-			//instance_destroy();
-			//if !audio_is_playing(snd_restart) audio_play_once(snd_restart,10)
-			//fadetoroom(room, 30, c_black)
-			//is_recording=0;
-		}
-	}
 }

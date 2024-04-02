@@ -9,7 +9,7 @@ if target==undefined {
 	if room_exists(room_next(room))
 	    TransitionStart(room_next(room),sqRoomFadeOut,sqRoomFadeIn)
 	else
-		TransitionStart(rm_lvlselect,sqRoomFadeOut,sqRoomFadeIn)
+		TransitionStart(rm_credits,sqRoomFadeOut,sqRoomFadeIn)
 } else {
 	TransitionStart(target,sqRoomFadeOut,sqRoomFadeIn)
 }

@@ -15,12 +15,12 @@ if !(grounded)
 
 var player = instance_place(x,y-16,obj_player)
 
-if !player && place_meeting(x-2,y,obj_player) && (obj_player.kright)
+if !player && place_meeting(x-2,y,obj_player) && (obj_player.kright) && !(releasebuffer)
 { 
 	hsp = 2
 }
 
-if !player && place_meeting(x+2,y,obj_player) && (obj_player.kleft)
+if !player && place_meeting(x+2,y,obj_player) && (obj_player.kleft) && !(releasebuffer)
 { 
 	hsp = -2
 }
@@ -145,33 +145,50 @@ else
 
 if (input_check_pressed("carry")) && (throwable)
 {
-	coll=collision_rectangle(x+16*carryplayer.xsc,y-18,x+26*carryplayer.xsc,y+18,obj_wall,false,true)
-    if instance_exists(carryplayer) && (!coll || (coll && coll.object_index==obj_player)) {
-		    if !(carryplayer.dropbuffer > 0) 
-		    {
-				carry = 0
-				carryplayer.carryid = undefined
-				carryplayer.carrying = 0
-				releasebuffer = 5
+	var _list = ds_list_create();
+	
+	if (carryplayer.kup)
+	coll=collision_rectangle_list(x-16,y-16-10,x+16,y+16,obj_wall,false,true,_list,true)
+	else
+	coll=collision_rectangle_list(x+16*carryplayer.xsc,y-18,x+26*carryplayer.xsc,y+18,obj_wall,false,true,_list,true)
+
+	var halt=false;
+	if coll > 0
+	{
+	    for (var i = 0; i < coll; ++i;)
+	    {
+	       if (_list[| i].object_index == obj_wall || object_is_ancestor(_list[| i].object_index, obj_wall)) && (_list[| i].object_index != obj_player)
+		   halt=true;
+	    }
+	}
+
+	ds_list_destroy(_list);
+	
+    if instance_exists(carryplayer) && (!coll || !(halt)) {
+		if !(carryplayer.dropbuffer > 0) 
+		{
+			carry = 0
+			carryplayer.carryid = undefined
+			carryplayer.carrying = 0
+			releasebuffer = 5
 				
-				if (carryplayer.kup) {
-					y -= 12
-					x -= 20*carryplayer.xsc
+			if (carryplayer.kup) {
+				y -= 10
 					
-					hsp = carryplayer.hsp
-				    vsp = -9
-				} else if (carryplayer.kdown) {
-					x += 14*carryplayer.xsc
+				hsp = carryplayer.hsp
+				vsp = -9
+			} else if (carryplayer.kdown) {
+				x += (10*carryplayer.xsc)+(carryplayer.hsp)
 					
-					hsp = carryplayer.hsp
-					vsp=1
-				} else {
-					x += 16*carryplayer.xsc
+				hsp = carryplayer.hsp
+				vsp=1
+			} else {
+				x += (10*carryplayer.xsc)+(carryplayer.hsp)
 				
-					hsp = 10*carryplayer.xsc
-				    vsp = -2
-				}
+				hsp = 10*carryplayer.xsc
+				vsp = -2
 			}
+		}
 	}
 
 }

@@ -245,6 +245,22 @@ if (kcarry) && (carryid==undefined) && (box) && (box.image_xscale==1) && (box.im
 	carrying=1
 }
 
+var box=instance_place(x,y-2,obj_box)
+if (kcarry) && (kup) && (carryid==undefined) && (box) && (box.image_xscale==1) && (box.image_yscale==1) && !(box.releasebuffer){
+	carryid=box
+	box.carryplayer=id
+	box.carry=1
+	carrying=1
+}
+
+var box=instance_place(x,y+2,obj_box)
+if (kcarry) && (kdown) &&(carryid==undefined) && (box) && (box.image_xscale==1) && (box.image_yscale==1) && !(box.releasebuffer){
+	carryid=box
+	box.carryplayer=id
+	box.carry=1
+	carrying=1
+}
+
 //Switch Gravity pt 2
 /*if place_meeting(x,y,obj_bluediamond) && (alarm[1] > 0)
 {

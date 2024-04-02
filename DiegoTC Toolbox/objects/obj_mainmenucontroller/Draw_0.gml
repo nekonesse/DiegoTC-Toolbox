@@ -27,3 +27,6 @@ for(var i=0; i < array_length(menus); i++) {
 	}
 }
 draw_set_color(c_white)
+
+if (fade)
+draw_text_color(room_width/2,room_height-32,"Not available in demo",c_white,c_white,c_gray,c_gray,fade/60)

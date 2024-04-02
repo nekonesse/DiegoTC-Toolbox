@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_buttonreject",
+  "audioGroupId":{
+    "name":"soundgroup",
+    "path":"audiogroups/soundgroup",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.268209,
+  "name":"snd_buttonreject",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_buttonreject.wav",
+  "type":0,
+  "volume":1.0,
+}

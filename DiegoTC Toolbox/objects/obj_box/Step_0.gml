@@ -33,7 +33,7 @@ if (player)
 }
 
 var box = instance_place(x,y-4,obj_box)
-if (box)
+if (box && !box.carry)
 {
 	box.hsp_carry = hsp_final;
 	box.y += y_diff;

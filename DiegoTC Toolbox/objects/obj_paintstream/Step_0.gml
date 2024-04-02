@@ -10,7 +10,7 @@ var box = instance_place(x,y,obj_box)
 
 if (player) {
 	if (player.color!=player.defaultcolor && color == colors.water) || (player.color!=color && color!=colors.water)
-	audio_play_once(snd_paint,3)
+	audio_play_sound(snd_paint,3,false)
 	
 	if color != colors.water
 	player.color=color
@@ -20,7 +20,7 @@ if (player) {
 
 if (box && !box.carry) {
 	if (box.color!=box.defaultcolor && color == colors.water) || (box.color!=color && color!=colors.water)
-	audio_play_once(snd_paint,3)
+	audio_play_sound(snd_paint,3,false)
 	
 	if color != colors.water
 	box.color=color

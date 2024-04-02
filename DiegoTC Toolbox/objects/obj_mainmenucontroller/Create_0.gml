@@ -10,5 +10,5 @@ targets[1]=rm_lvlselect
 targets[2]=rm_menu
 targets[3]=rm_settings
 
-
+fade=0
 selected=1

@@ -1,0 +1,1 @@
+audio_play_sound(mus_mainmenu, 100,true)

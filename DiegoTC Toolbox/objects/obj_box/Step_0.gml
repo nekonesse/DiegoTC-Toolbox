@@ -1,3 +1,5 @@
+if (obj_global.paused) exit;
+
 if !(carry) {
 mask_index = spr_box;
 

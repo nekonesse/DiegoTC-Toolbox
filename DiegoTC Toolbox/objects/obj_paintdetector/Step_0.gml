@@ -1,3 +1,11 @@
+if (obj_global.paused) {
+image_speed=0;
+exit
+} else {
+image_speed=1;
+}
+
+
 if (channelid) != 0
 {
 	var player = instance_place(x,y,obj_player)

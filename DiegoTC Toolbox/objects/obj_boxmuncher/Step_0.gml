@@ -1,3 +1,5 @@
+if (obj_global.paused) exit;
+
 coll=instance_place(x,y-1,obj_box)
 if (coll && !coll.carry) && (counter < target) && !(going) {
 	going=1

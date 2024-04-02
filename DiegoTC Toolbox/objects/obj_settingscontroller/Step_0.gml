@@ -6,11 +6,11 @@ selected=wrap_val(selected,0,array_length(keybinds)-1)
 
 selectedx=wrap_val(selectedx,0,2)
 
-if input_check_pressed("up") {
+if input_check_pressed("menuup") {
 	selected-=1;
 	audio_play_sound(snd_buttonhover,5,0)
 }
-else if input_check_pressed("down") {
+else if input_check_pressed("menudown") {
 	selected+=1;
 	audio_play_sound(snd_buttonhover,5,0)
 }

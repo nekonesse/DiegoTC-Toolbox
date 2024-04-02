@@ -1,9 +1,12 @@
 /// @description Main
+if (obj_global.paused) {
+image_speed=0;
+exit
+} else {
+image_speed=1;
+}
 
-/*if !(obj_global.paused)
-{
 
-*/
 if input_check_pressed("restart",0,0) && !(obj_global.paused) && !(death)
 {
 	audio_play_once(snd_restart,10)
@@ -11,8 +14,8 @@ if input_check_pressed("restart",0,0) && !(obj_global.paused) && !(death)
 	is_recording=0;
 }
 
-if input_check_pressed("pause") 
-TransitionStart(rm_menu,sqRoomFadeOut,sqRoomFadeIn)
+//if input_check_pressed("pause") 
+//TransitionStart(rm_menu,sqRoomFadeOut,sqRoomFadeIn)
 /*
 if place_meeting(x,y,obj_spike) && death = 0
 {
@@ -366,6 +369,3 @@ cam.yto = y + vdist;
 cam.x += (cam.xto-cam.x)/camspd
 cam.y += (cam.yto-cam.y)/camspd
 */
-
-if keyboard_check_pressed(ord("Q")) color-=1
-if keyboard_check_pressed(ord("E")) color+=1

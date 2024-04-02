@@ -1,3 +1,10 @@
+if (obj_global.paused) {
+image_speed=0;
+exit
+} else {
+image_speed=1;
+}
+
 if (global.channel[real(channelid)]) 
 active=inverted
 else

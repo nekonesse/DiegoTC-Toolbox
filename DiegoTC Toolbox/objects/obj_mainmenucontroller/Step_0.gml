@@ -10,7 +10,7 @@ else if input_check_pressed("menudown") {
 }
 
 if input_check_pressed("accept") {
-	if selected!=4 && !(selected == 0 || selected == 2) {
+	if selected!=5 && !(selected == 0 || selected == 2) {
 		audio_play_sound(snd_buttonselect,5,0)
 		TransitionStart(targets[selected],sqRoomFadeOut,sqRoomFadeIn)
 	}

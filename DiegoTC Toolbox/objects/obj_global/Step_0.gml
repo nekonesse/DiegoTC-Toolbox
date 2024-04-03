@@ -13,7 +13,7 @@ if (paused) {
 		audio_play_sound(snd_buttonhover,5,0)
 	}
 	
-	if input_check_pressed("accept") || input_check_pressed("pause") {
+	if input_check_pressed("accept") || input_check_pressed("pause") || input_check_pressed("cancel") {
 		switch(selected) {
 			case 0: paused=0 break;
 			case 3: paused=0 TransitionStart(rm_lvlselect,sqRoomFadeOut,sqRoomFadeIn) break;
@@ -41,4 +41,5 @@ if (paused) {
 	}
 } else if input_check_pressed("pause") && (pausable) && !(paused) {
 	paused=1
+	selected=0;
 }

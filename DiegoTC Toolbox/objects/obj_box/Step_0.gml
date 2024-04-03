@@ -44,6 +44,21 @@ if (box && !box.carry)
 hsp_final = hsp + hsp_carry
 hsp_carry = 0;
 
+coll=instance_place(x,y,obj_wall) 
+if (coll && coll.object_index != obj_player) { //ANTI CLIPPING
+	if distance_to_point(coll.bbox_left,coll.y) > distance_to_point(coll.bbox_right,coll.y) 
+	x++;
+	else
+	x--;
+	
+	var _fakehsp = x-xprevious;
+	
+	player=instance_place(x+_fakehsp,y,obj_player)
+	if (player) {
+		player.x+=_fakehsp;
+	}
+}
+
 //Collision
 if place_meeting(x+hsp_final,y,obj_wall)
 {
@@ -143,37 +158,32 @@ else
 	
 }
 
-if (input_check_pressed("carry")) && (throwable)
+var _list = ds_list_create();
+	
+if (carryplayer.kup)
+coll=collision_rectangle_list(x-16,y-16-(12 + (-carryplayer.vsp)),x+16,y+16,obj_wall,false,true,_list,true)
+else
+coll=collision_rectangle_list(x-16*carryplayer.xsc,y-18,x+26*carryplayer.xsc,y+18,obj_wall,false,true,_list,true)
+
+halt=false;
+if coll > 0
 {
-	var _list = ds_list_create();
-	
-	if (carryplayer.kup)
-	coll=collision_rectangle_list(x-16,y-16-10,x+16,y+16,obj_wall,false,true,_list,true)
-	else
-	coll=collision_rectangle_list(x+16*carryplayer.xsc,y-18,x+26*carryplayer.xsc,y+18,obj_wall,false,true,_list,true)
-
-	var halt=false;
-	if coll > 0
+	for (var i = 0; i < coll; ++i;)
 	{
-	    for (var i = 0; i < coll; ++i;)
-	    {
-	       if (_list[| i].object_index == obj_wall || object_is_ancestor(_list[| i].object_index, obj_wall)) && (_list[| i].object_index != obj_player)
-		   halt=true;
-	    }
+	    if (_list[| i].object_index == obj_wall || (object_is_ancestor(_list[| i].object_index, obj_wall) && _list[| i].object_index != obj_player)) 
+		halt=true;
 	}
+}
+ds_list_destroy(_list);
 
-	ds_list_destroy(_list);
+if (input_check_pressed("carry")) && (throwable) && (!halt)
+{
 	
-    if instance_exists(carryplayer) && (!coll || !(halt)) {
+    if instance_exists(carryplayer) {
 		if !(carryplayer.dropbuffer > 0) 
-		{
-			carry = 0
-			carryplayer.carryid = undefined
-			carryplayer.carrying = 0
-			releasebuffer = 5
-				
+		{		
 			if (carryplayer.kup) {
-				y -= 10
+				y -= (12 + (-carryplayer.vsp))
 					
 				hsp = carryplayer.hsp
 				vsp = -9
@@ -183,13 +193,23 @@ if (input_check_pressed("carry")) && (throwable)
 				hsp = carryplayer.hsp
 				vsp=1
 			} else {
-				x += (10*carryplayer.xsc)+(carryplayer.hsp)
-				
-				hsp = 10*carryplayer.xsc
+				coll=collision_rectangle(x-16*carryplayer.xsc,y-18,x+(26*carryplayer.xsc)+(carryplayer.hsp+2*carryplayer.xsc),y+18,obj_wall,false,true)
+				if (!coll && coll.object_index!=obj_player) {
+					x += (10*carryplayer.xsc)
+				}
+				else {
+					x += (10*carryplayer.xsc)+(carryplayer.hsp)
+					hsp = 10*carryplayer.xsc
+				}
 				vsp = -2
 			}
 		}
 	}
+	
+	carry = 0
+	carryplayer.carryid = undefined
+	carryplayer.carrying = 0
+	releasebuffer = 5
 
 }
 } else {

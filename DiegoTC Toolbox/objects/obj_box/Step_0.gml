@@ -209,7 +209,7 @@ if (input_check_pressed("carry")) && (throwable) && (!halt)
 	carry = 0
 	carryplayer.carryid = undefined
 	carryplayer.carrying = 0
-	releasebuffer = 5
+	releasebuffer = 10
 
 }
 } else {

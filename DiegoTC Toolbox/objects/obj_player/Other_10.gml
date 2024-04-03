@@ -26,12 +26,30 @@ if !(grounded)
 	if (move!=0) {
 		if !(carrying)
 		sprite_index=spr_diegowalk
-		else
-		sprite_index=spr_diegowalkhold
+		else {
+			if (kup) {
+				if sprite_index!=spr_diegolookupwalk
+				image_index=0;
+				
+				sprite_index=spr_diegolookupwalk
+			}
+			else
+			sprite_index=spr_diegowalkhold
+		}
 	} else {
 		if !(carrying)
 		sprite_index=spr_diegoidle
-		else
-		sprite_index=spr_diegoidlehold
+		else {
+			if (kup) {
+				if sprite_index!=spr_diegolookupidle && sprite_index!=spr_diegolookupwalk
+				image_index=0;
+				
+				sprite_index=spr_diegolookupidle
+				if image_index >= 6
+				image_index=2
+			}
+			else
+			sprite_index=spr_diegoidlehold
+		}
 	}
 }

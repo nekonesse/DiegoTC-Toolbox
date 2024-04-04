@@ -45,7 +45,7 @@ hsp_final = hsp + hsp_carry
 hsp_carry = 0;
 
 coll=instance_place(x,y,obj_wall) 
-if (coll && coll.object_index != obj_player) { //ANTI CLIPPING
+if (coll && coll.object_index != obj_player && !coll.carry) { //ANTI CLIPPING
 	if distance_to_point(coll.bbox_left,coll.y) > distance_to_point(coll.bbox_right,coll.y) 
 	x++;
 	else

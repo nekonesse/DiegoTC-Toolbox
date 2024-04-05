@@ -24,27 +24,37 @@ if !(grounded)
 	}
 } else {
 	if (move!=0) {
-		if !(carrying)
-		sprite_index=spr_diegowalk
+		if !(carrying) {
+			if (kup)
+			sprite_index=spr_diegolookupwalk
+			else
+			sprite_index=spr_diegowalk
+		}
 		else {
-			if (kup) {
-				if sprite_index!=spr_diegolookupwalk
-				image_index=0;
-				
-				sprite_index=spr_diegolookupwalk
-			}
+			if (kup)
+			sprite_index=spr_diegolookupholdwalk
 			else
 			sprite_index=spr_diegowalkhold
 		}
 	} else {
-		if !(carrying)
-		sprite_index=spr_diegoidle
-		else {
+		if !(carrying) {
 			if (kup) {
 				if sprite_index!=spr_diegolookupidle && sprite_index!=spr_diegolookupwalk
 				image_index=0;
 				
 				sprite_index=spr_diegolookupidle
+				if image_index >= 6
+				image_index=2
+			}
+			else
+			sprite_index=spr_diegoidle
+		}
+		else {
+			if (kup) {
+				if sprite_index!=spr_diegolookupholdidle && sprite_index!=spr_diegolookupholdwalk
+				image_index=0;
+				
+				sprite_index=spr_diegolookupholdidle
 				if image_index >= 6
 				image_index=2
 			}

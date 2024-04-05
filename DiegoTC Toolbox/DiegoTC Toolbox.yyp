@@ -551,6 +551,8 @@
     {"id":{"name":"spr_diegoidlehold","path":"sprites/spr_diegoidlehold/spr_diegoidlehold.yy",},},
     {"id":{"name":"spr_diegojump","path":"sprites/spr_diegojump/spr_diegojump.yy",},},
     {"id":{"name":"spr_diegojumphold","path":"sprites/spr_diegojumphold/spr_diegojumphold.yy",},},
+    {"id":{"name":"spr_diegolookupholdidle","path":"sprites/spr_diegolookupholdidle/spr_diegolookupholdidle.yy",},},
+    {"id":{"name":"spr_diegolookupholdwalk","path":"sprites/spr_diegolookupholdwalk/spr_diegolookupholdwalk.yy",},},
     {"id":{"name":"spr_diegolookupidle","path":"sprites/spr_diegolookupidle/spr_diegolookupidle.yy",},},
     {"id":{"name":"spr_diegolookupwalk","path":"sprites/spr_diegolookupwalk/spr_diegolookupwalk.yy",},},
     {"id":{"name":"spr_diegopal","path":"sprites/spr_diegopal/spr_diegopal.yy",},},

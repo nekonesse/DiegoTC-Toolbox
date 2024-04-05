@@ -43,7 +43,7 @@ if !(grounded)
 				image_index=0;
 				
 				sprite_index=spr_diegolookupidle
-				if image_index >= 6
+				if image_index > 6
 				image_index=2
 			}
 			else
@@ -55,7 +55,7 @@ if !(grounded)
 				image_index=0;
 				
 				sprite_index=spr_diegolookupholdidle
-				if image_index >= 6
+				if image_index > 6
 				image_index=2
 			}
 			else

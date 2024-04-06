@@ -39,7 +39,7 @@ if !(grounded)
 	} else {
 		if !(carrying) {
 			if (kup) {
-				if sprite_index!=spr_diegolookupidle && sprite_index!=spr_diegolookupwalk
+				if sprite_index!=spr_diegolookupidle && sprite_index!=spr_diegolookupwalk && sprite_index!=spr_diegolookupholdidle && sprite_index!=spr_diegolookupholdwalk
 				image_index=0;
 				
 				sprite_index=spr_diegolookupidle
@@ -51,7 +51,7 @@ if !(grounded)
 		}
 		else {
 			if (kup) {
-				if sprite_index!=spr_diegolookupholdidle && sprite_index!=spr_diegolookupholdwalk
+				if sprite_index!=spr_diegolookupholdidle && sprite_index!=spr_diegolookupholdwalk && sprite_index!=spr_diegolookupholdidle && sprite_index!=spr_diegolookupholdwalk
 				image_index=0;
 				
 				sprite_index=spr_diegolookupholdidle
